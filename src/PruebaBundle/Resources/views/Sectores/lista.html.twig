@@ -1,0 +1,44 @@
+{% extends "layout.html.twig" %}
+{% block contenido %}
+    <div class="row paddin20px">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center"><a href="{{ path('prueba_add_sector') }}" class="btn btn-info">Añadir Nuevo Sector</a></div>
+        <div class="col-sm-4"></div>
+    </div>
+    {% if message=='success' %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center bg-success paddin20px">Sector guardado correctamente</h4>
+            </div>
+        </div>
+    {% endif %}
+    {% if message=='eliminado_exito' %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center bg-success paddin20px">Sector eliminado correctamente</h4>
+            </div>
+        </div>
+    {% endif %}
+    {% if message=='error' %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center bg-danger paddin20px">El sector ya existe</h4>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 table-responsive">
+            <table class="table text-center">
+                {% if sectores|length > 0 %}
+                <tr><th class="text-center">Nombre</th><th class="text-center">Acciones</th></tr>
+                {% for sector in sectores %}
+                    <tr><td>{{ sector.nombre }}</td><td><a class="btn btn-warning" href="/sectores/modificar/{{ sector.id }}" role="button">Modificar</a> <a class="btn btn-danger" href="/sectores/eliminar/{{ sector.id }}" role="button">Eliminar</a></td></tr>
+                {% endfor %}
+                    {% endif %}
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+.paddin20px{
+    padding: 20px;
+}
+.footer{
+    position: fixed;
+    bottom: 40px;
+    text-align: center;
+    background: rebeccapurple;
+}
+#info{
+    display: none;
+}

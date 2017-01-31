@@ -1,0 +1,42 @@
+{% extends "layout.html.twig" %}
+{% block contenido %}
+<div class="row">
+    <div class="col-sm-12">
+       <h3 class="text-center">{{ titulo }}</h3>
+    </div>
+</div>
+    <div class="row" id="info">
+        <div class="col-sm-12">
+            <h4 class="text-center bg-danger paddin20px">Tu formulario contiene errores y no se ha podido enviar</h4>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.nombre) }}
+                        {{ form_widget(form.nombre, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.telefono) }}
+                        {{ form_widget(form.telefono, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.sector) }}
+                        {{ form_widget(form.sector, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="paddin20px text-center">
+                        {{ form_widget(form.save, {'attr': {'class': 'btn btn-default'}}) }}
+                        <a href="{{ path('prueba_empresas') }}" class="btn btn-info" id="cancelar" name="cancelar">Cancelar</a>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+{% endblock %}

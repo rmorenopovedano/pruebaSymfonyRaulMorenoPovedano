@@ -1,0 +1,46 @@
+prueba_homepage:
+    path:     /
+    defaults: { _controller: PruebaBundle:Default:index }
+
+prueba_add_empresa:
+    path:     /empresas/add
+    defaults: { _controller: PruebaBundle:Empresas:annadirEmpresa }
+
+prueba_modificar_empresa:
+    path:     /empresas/modificar/{id}
+    defaults: { _controller: PruebaBundle:Empresas:modificarEmpresa }
+
+prueba_empresas_eliminar:
+    path:     /empresas/eliminar/{id}
+    defaults: { _controller: PruebaBundle:Empresas:eliminarEmpresa }
+
+prueba_empresas_eliminado:
+    path:     /empresas/eliminado/{id}
+    defaults: { _controller: PruebaBundle:Empresas:eliminarEmpresaSuccess }
+
+prueba_empresas:
+    path:     /empresas/{message}
+    defaults: { _controller: PruebaBundle:Empresas:cargarEmpresas, message:false }
+
+prueba_add_sector:
+    path:     /sectores/add
+    defaults: { _controller: PruebaBundle:Sectores:annadirSector }
+
+prueba_modificar_sector:
+    path:     /sectores/modificar/{id}
+    defaults: { _controller: PruebaBundle:Sectores:modificarSector }
+
+prueba_sectores_eliminar:
+    path:     /sectores/eliminar/{id}
+    defaults: { _controller: PruebaBundle:Sectores:eliminarSector }
+
+prueba_sectores_eliminado:
+    path:     /sectores/eliminado/{id}
+    defaults: { _controller: PruebaBundle:Sectores:eliminarSectorSuccess }
+
+prueba_sectores:
+    path:     /sectores/{message}
+    defaults: { _controller: PruebaBundle:Sectores:cargarSectores, message:false }
+
+
+

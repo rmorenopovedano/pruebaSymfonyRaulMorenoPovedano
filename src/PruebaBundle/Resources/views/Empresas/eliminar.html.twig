@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="bg-warning paddin20px text-center">¿Quieres eliminar la empresa {{ empresa.nombre }}?</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-default" href="{{ path('prueba_empresas_eliminado', {'id':empresa.id}) }}" role="button">Aceptar</a>
+            <a class="btn btn-default" href="{{ path('prueba_empresas') }}" role="button">Cancelar</a>
+        </div>
+    </div>
+
+{% endblock %}

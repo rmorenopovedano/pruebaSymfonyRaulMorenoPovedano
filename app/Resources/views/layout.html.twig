@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="bg-primary text-center paddin20px">Prueba Symfony Raúl Moreno</h1>
+
+            </div>
+        </div>
+        <div class="row" style="margin: 0 auto">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <ul class="nav nav-pills nav-justified">
+                    {% if path(app.request.get('_route'),app.request.attributes.get('_route_params'))== path('prueba_empresas') %}
+                        <li id="empresa" class="active" role="presentation"><a href="{{ path('prueba_empresas') }}">Empresas</a></li>
+                    {% else %}
+                        <li id="empresa" role="presentation"><a href="{{ path('prueba_empresas') }}">Empresas</a></li>
+                    {% endif %}
+                    {% if path(app.request.get('_route'), app.request.attributes.get('_route_params'))== path('prueba_sectores') %}
+                        <li id="sector" class="active" role="presentation"><a href="{{ path('prueba_sectores') }}">Sectores</a></li>
+                    {% else %}
+                        <li id="sector" role="presentation"><a href="{{ path('prueba_sectores') }}">Sectores</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+        {% block contenido %}{% endblock %}
+    </div>
+{% endblock %}

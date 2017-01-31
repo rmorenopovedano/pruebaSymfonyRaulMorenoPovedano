@@ -1,0 +1,75 @@
+{% extends "layout.html.twig" %}
+{% block contenido %}
+    <div class="row paddin20px">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center"><a href="{{ path('prueba_add_empresa') }}" class="btn btn-info">Añadir Nueva Empresa</a></div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{ form_start(formbuscador) }}
+            <div class="col-sm-5">
+                <div class="form-group">
+                    {{ form_label(formbuscador.nombre) }}
+                    {{ form_widget(formbuscador.nombre, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    {{ form_label(formbuscador.sector) }}
+                    {{ form_widget(formbuscador.sector, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="paddin20px text-center">
+                    {{ form_widget(formbuscador.buscar, {'attr': {'class': 'btn btn-default'}}) }}
+                </div>
+                {{ form_end(formbuscador) }}
+            </div>
+        </div>
+    </div>
+    {% if message=='success' %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center bg-success paddin20px">Empresa guardada correctamente</h4>
+            </div>
+        </div>
+        {% endif %}
+    {% if message=='eliminado_exito' %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center bg-success paddin20px">Empresa eliminada correctamente</h4>
+            </div>
+        </div>
+    {% endif %}
+    {% if message=='error' %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="text-center bg-danger paddin20px">No se ha podido crear una empresa porque no hay sectores añadidos. Añade un nuevo sector</h4>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 table-responsive">
+            <table class="table text-center">
+                {% if empresas|length > 0 %}
+                <tr><th class="text-center">Nombre</th><th class="text-center">Teléfono</th><th class="text-center">Correo</th><th class="text-center">Sector</th><th class="text-center">Acciones</th></tr>
+                {% for empresa in empresas %}
+                    <tr><td>{{ empresa.nombre }}</td><td>{{ empresa.telefono }}</td><td>{{ empresa.email }}</td><td>{{ empresa.sector.nombre }}<td><a class="btn btn-warning" href="/empresas/modificar/{{ empresa.id }}" role="button">Modificar</a> <a class="btn btn-danger" href="/empresas/eliminar/{{ empresa.id }}" role="button">Eliminar</a></td></tr>
+                {% endfor %}
+                    {% endif %}
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <div>
+        {% if pager.haveToPaginate() %}
+            {{ pagerfanta(pager, 'twitter_bootstrap3', {
+                prev_message: 'Anterior',
+                next_message: 'Siguiente'
+            }) }}
+        {% endif %}
+    </div>
+{% endblock %}
